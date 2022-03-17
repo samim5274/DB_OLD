@@ -1,0 +1,1541 @@
+USE [DORMITORY]
+GO
+/****** Object:  Table [dbo].[GenderInfo]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[GenderInfo](
+	[GenderId] [int] IDENTITY(1,1) NOT NULL,
+	[GenderName] [varchar](50) NULL,
+ CONSTRAINT [PK_GenderInfo] PRIMARY KEY CLUSTERED 
+(
+	[GenderId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ShiftInfo]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ShiftInfo](
+	[ShiftId] [int] IDENTITY(1,1) NOT NULL,
+	[ShiftName] [varchar](50) NULL,
+ CONSTRAINT [PK_ShiftInfo] PRIMARY KEY CLUSTERED 
+(
+	[ShiftId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SemisterInfo]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SemisterInfo](
+	[SemisterId] [int] IDENTITY(1,1) NOT NULL,
+	[SemisterName] [varchar](50) NULL,
+ CONSTRAINT [PK_SemisterInfo] PRIMARY KEY CLUSTERED 
+(
+	[SemisterId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[PurposeInfo]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PurposeInfo](
+	[PurposeId] [int] IDENTITY(1,1) NOT NULL,
+	[PurposeName] [varchar](50) NULL,
+ CONSTRAINT [PK_PurposeInfo] PRIMARY KEY CLUSTERED 
+(
+	[PurposeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DepartmentInfo]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DepartmentInfo](
+	[DepartmentId] [int] IDENTITY(1,1) NOT NULL,
+	[DepartmentName] [varchar](50) NULL,
+ CONSTRAINT [PK_DepartmentInfo] PRIMARY KEY CLUSTERED 
+(
+	[DepartmentId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[StudentInformation]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[StudentInformation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](32) NULL,
+	[Roll] [int] NULL,
+	[Registration] [int] NULL,
+	[SemisterId] [int] NULL,
+	[ShiftId] [int] NULL,
+	[DepartmentId] [int] NULL,
+	[GenderId] [int] NULL,
+	[Address] [varchar](50) NULL,
+	[Phone] [int] NULL,
+	[DateOfBirth] [date] NULL,
+ CONSTRAINT [PK_StudentInformation] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[MilInfoDetail]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MilInfoDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [date] NULL,
+	[StudentId] [int] NULL,
+	[Mil] [int] NULL,
+ CONSTRAINT [PK_MilInfoDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ExpenditureDetail]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ExpenditureDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [date] NULL,
+	[StudentId] [int] NULL,
+	[WhichOneName] [varchar](250) NULL,
+	[ExpansesName] [varchar](50) NULL,
+	[GivenMoney] [money] NULL,
+	[ExpansesMoney] [money] NULL,
+	[ReturnMoney] [money] NULL,
+ CONSTRAINT [PK_ExpenditurePaid] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DipositMoneyDetail]    Script Date: 03/18/2022 00:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DipositMoneyDetail](
+	[Id] [int] IDENTITY(101,101) NOT NULL,
+	[Date] [date] NULL,
+	[GiverId] [int] NULL,
+	[ReciverId] [int] NULL,
+	[PurposeId] [int] NULL,
+	[Money] [money] NULL,
+	[Credit_Money] [money] NULL,
+ CONSTRAINT [PK_DipositMoneyDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DEPARTMENT_WISE_SUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DEPARTMENT_WISE_SUMMARY]
+		 @DEPARTMENT INT 
+AS
+		IF @DEPARTMENT = 0 SET @DEPARTMENT = NULL
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @DEPARTMENT IS NULL THEN 1
+				WHEN @DEPARTMENT IS NOT NULL AND SI.DepartmentId = @DEPARTMENT THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GENDER_WISE_SUMAMRY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	GENDER WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GENDER_WISE_SUMAMRY]
+@GENDER INT
+AS
+IF @GENDER = 0 SET @GENDER = NULL
+BEGIN
+
+	SET NOCOUNT ON;
+SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @GENDER IS NULL THEN 1
+				WHEN @GENDER IS NOT NULL AND SI.GenderId = @GENDER THEN 1
+			END = 1
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GENDER_DEPARTMENT_WISE_SUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	GENDER AND DEPARTMENT WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GENDER_DEPARTMENT_WISE_SUMMARY]
+
+		 @GENDER INT ,
+		 @DEPARTMENT INT 
+AS
+		IF @GENDER = 0 SET @GENDER = NULL
+		IF @DEPARTMENT = 0 SET @DEPARTMENT = NULL
+BEGIN
+	SET NOCOUNT ON;
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @GENDER IS NULL THEN 1
+				WHEN @GENDER IS NOT NULL AND SI.GenderId = @GENDER THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @DEPARTMENT IS NULL THEN 1
+				WHEN @DEPARTMENT IS NOT NULL AND  SI.DepartmentId = @DEPARTMENT  THEN 1
+			END = 1
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SHIFT_WISE_SUMMAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	SHIFT WISE SUMMAY
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SHIFT_WISE_SUMMAY]
+		 @SHIFT INT
+AS
+IF @SHIFT = 0 SET @SHIFT = NULL
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SHIFT IS NULL THEN 1
+				WHEN @SHIFT IS NOT NULL AND SI.ShiftId = @SHIFT THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SHIFT_SEMESTER_WISE_DETAIL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	SHIFT AND SEMESTER WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SHIFT_SEMESTER_WISE_DETAIL]
+		 @SEMSETER INT ,
+		 @SHIFT INT 
+AS
+		IF @SEMSETER = 0 SET @SEMSETER = NULL
+		IF @SHIFT = 0 SET @SHIFT = NULL
+BEGIN
+	SET NOCOUNT ON;
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SEMSETER IS NULL THEN 1
+				WHEN @SEMSETER IS NOT NULL AND SI.SemisterId = @SEMSETER THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @SHIFT IS NULL THEN 1
+				WHEN @SHIFT IS NOT NULL AND  SI.ShiftId = @SHIFT  THEN 1
+			END = 1
+			
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SHIFT_GENDER_WISE_SUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	GENDER AND SHIFT WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SHIFT_GENDER_WISE_SUMMARY]
+		 @GENDER INT ,
+		 @SHIFT INT 
+AS
+		IF @GENDER = 0 SET @GENDER = NULL
+		IF @SHIFT = 0 SET @SHIFT = NULL
+BEGIN
+	SET NOCOUNT ON;
+
+    SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @GENDER IS NULL THEN 1
+				WHEN @GENDER IS NOT NULL AND SI.GenderId = @GENDER THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @SHIFT IS NULL THEN 1
+				WHEN @SHIFT IS NOT NULL AND  SI.ShiftId = @SHIFT  THEN 1
+			END = 1
+			
+    
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SHIFT_DEPARTMENT_WISE_SUMMAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	SHIFT AND DEPARTMENT WISE SUMMAY
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SHIFT_DEPARTMENT_WISE_SUMMAY]
+		 @SHIFT INT ,
+		 @DEPARTMENT INT 
+AS
+IF @SHIFT = 0 SET @SHIFT = NULL
+		IF @DEPARTMENT = 0 SET @DEPARTMENT = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SHIFT IS NULL THEN 1
+				WHEN @SHIFT IS NOT NULL AND SI.ShiftId = @SHIFT THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @DEPARTMENT IS NULL THEN 1
+				WHEN @DEPARTMENT IS NOT NULL AND  SI.DepartmentId = @DEPARTMENT  THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SEMESTER_WISE_SUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	SP_SEMESTER_WISE_SUMMARY
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SEMESTER_WISE_SUMMARY]
+@SEMSETER INT
+AS
+		IF @SEMSETER = 0 SET @SEMSETER = NULL
+BEGIN
+	SET NOCOUNT ON;
+
+    SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SEMSETER IS NULL THEN 1
+				WHEN @SEMSETER IS NOT NULL AND SI.SemisterId = @SEMSETER THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SEMESTER_GENDER_WISE_SUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	SEMESTER AND GENDER WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SEMESTER_GENDER_WISE_SUMMARY]
+		 @GENDER INT,
+		 @SEMESTER INT 
+AS
+		IF @GENDER = 0 SET @GENDER = NULL
+		IF @SEMESTER = 0 SET @SEMESTER = NULL
+BEGIN
+	SET NOCOUNT ON;
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @GENDER IS NULL THEN 1
+				WHEN @GENDER IS NOT NULL AND SI.GenderId = @GENDER THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @SEMESTER IS NULL THEN 1
+				WHEN @SEMESTER IS NOT NULL AND  SI.SemisterId = @SEMESTER  THEN 1
+			END = 1
+   
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SEMESTER_DEPARTMENT_WISE_SUMMAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	Semester and department wise detail
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SEMESTER_DEPARTMENT_WISE_SUMMAY]
+		 @SEMESTER INT ,
+		 @DEPARTMENT INT 
+AS
+IF @SEMESTER = 0 SET @SEMESTER = NULL
+		IF @DEPARTMENT = 0 SET @DEPARTMENT = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SEMESTER IS NULL THEN 1
+				WHEN @SEMESTER IS NOT NULL AND SI.SemisterId = @SEMESTER THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @DEPARTMENT IS NULL THEN 1
+				WHEN @DEPARTMENT IS NOT NULL AND  SI.DepartmentId = @DEPARTMENT  THEN 1
+			END = 1
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_ALL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	ALL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_ALL]
+		 @SEMESTER INT,
+		 @SHIFT INT ,
+		 @DEPARTMENT INT ,
+		 @GENDER INT 
+AS
+		IF @SEMESTER = 0 SET @SEMESTER = NULL
+		IF @SHIFT = 0 SET @SHIFT = NULL
+		IF @DEPARTMENT = 0 SET @DEPARTMENT = NULL
+		IF @GENDER = 0 SET @GENDER = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+			SI.Name ,
+			SI.Roll,
+			SI.Registration ,
+			GI.GenderName,
+			DI.DepartmentName,
+			SDI.ShiftName,
+			SD.SemisterName						
+		FROM StudentInformation AS SI
+		
+			INNER JOIN DepartmentInfo AS DI ON DI.DepartmentId = SI.DepartmentId
+				INNER JOIN SemisterInfo AS SD ON SD.SemisterId = SI.SemisterId 
+					INNER JOIN ShiftInfo AS SDI ON SDI.ShiftId = SI.ShiftId 
+						INNER JOIN GenderInfo AS GI ON GI.GenderId = SI.GenderId 
+			WHERE 
+			
+			CASE 
+				WHEN @SEMESTER IS NULL THEN 1
+				WHEN @SEMESTER IS NOT NULL AND SI.SemisterId = @SEMESTER THEN 1
+			END = 1
+			
+			AND
+			
+			CASE
+				WHEN @SHIFT IS NULL THEN 1
+				WHEN @SHIFT IS NOT NULL AND SI.ShiftId = @SHIFT THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @DEPARTMENT IS NULL THEN 1
+				WHEN @DEPARTMENT IS NOT NULL AND  SI.DepartmentId = @DEPARTMENT  THEN 1
+			END = 1
+			
+			AND 
+			
+			CASE
+				WHEN @GENDER IS NULL THEN 1
+				WHEN @GENDER IS NOT NULL AND  SI.GenderId = @GENDER  THEN 1
+			END = 1
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GRIDVIEWDISPLAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GRIDVIEWDISPLAY]
+
+AS
+BEGIN
+
+	select
+				s.Name,
+				s.Roll,
+				s.Registration,
+				SS.SemisterName,
+				DD.DepartmentName,
+				s.DateOfBirth,
+				s.Phone,
+				sf.ShiftName,
+				DD.DepartmentName,
+				s.Address
+			 from StudentInformation as s
+			 
+				INNER JOIN SemisterInfo AS SS ON SS.SemisterId = S.SemisterId
+					INNER JOIN GenderInfo AS GG ON GG.GenderId = S.GenderId
+						INNER JOIN ShiftInfo AS SF ON SF.ShiftId = S.ShiftId 
+							INNER JOIN DepartmentInfo AS DD ON DD.DepartmentId = S.DepartmentId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GRIDVIEWDIPOSIT]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GRIDVIEWDIPOSIT]
+AS
+BEGIN
+				SELECT 
+			S.Id,
+			S.Name,
+			D.ReciverId,
+			D.Date,
+			D.Money			
+			FROM DipositMoneyDetail AS D
+				INNER JOIN StudentInformation AS S ON S.Id = D.GiverId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GIVERANDDAYWISESUMMYDISPLAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-07-01
+-- Description:	Day and giver wise Summary 
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GIVERANDDAYWISESUMMYDISPLAY]
+
+		 @STARTDATE DATE ,
+		 @ENDDATE DATE ,
+		 @GIVERNAME INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 
+			DS.Date,
+			STDG.Name ,
+			DS.Money
+		FROM DipositMoneyDetail AS DS
+			
+			INNER JOIN StudentInformation AS STDG ON STDG.Id = DS.GiverId 
+			
+			WHERE
+			
+				DS.Date BETWEEN @STARTDATE AND @ENDDATE 	
+				
+			AND			
+			
+			CASE
+				WHEN @GIVERNAME IS NULL THEN 1
+				WHEN @GIVERNAME IS NOT NULL AND @GIVERNAME = DS.GiverId THEN 1
+			END = 1
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_XXXXXXXXXXXXXXXXXXX]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	xxxxxxxxxxx
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_XXXXXXXXXXXXXXXXXXX]
+AS
+BEGIN
+	SELECT 
+					SI.Name,
+					MI.Mil,
+					EX.ExpansesMoney,					
+					DD.Money,
+					DD.Credit_Money,				
+					
+						(Money - ExpansesMoney ) Total,
+						((Money - ExpansesMoney  ) - Credit_Money) Total_Balance,
+						(((Money - ExpansesMoney  ) - Credit_Money)/Mil) Mil_Rate,
+						((((Money - ExpansesMoney  ) - Credit_Money)/Mil)* Mil) Total_Expenses,
+						(((((Money - ExpansesMoney  ) - Credit_Money)/Mil)* Mil) - 
+						((Money - ExpansesMoney ) - Credit_Money))TT						
+					
+				FROM StudentInformation AS SI
+					
+					INNER JOIN ExpenditureDetail AS EX ON EX.StudentId = SI.Id
+						INNER JOIN MilInfoDetail AS MI ON MI.StudentId = SI.Id 
+							INNER JOIN DipositMoneyDetail AS DD ON DD.GiverId = SI.Id 
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_WITHDRAWGRIDVIEW]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_WITHDRAWGRIDVIEW]
+AS
+BEGIN
+			
+			SELECT
+				SI.Id, 
+				SI.Name,
+				STD.Name,
+				DMT.Date,
+				PP.PurposeName,
+				DMT.Credit_Money
+			 FROM DipositMoneyDetail AS DMT
+				
+				INNER JOIN StudentInformation AS SI ON SI.Id = DMT.ReciverId
+					INNER JOIN PurposeInfo AS PP ON PP.PurposeId = DMT.PurposeId 
+						INNER JOIN StudentInformation AS STD ON STD.Id = DMT.GiverId 
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_TOTALEXPANSESDAYWISE]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 2021-07-03
+-- Description:	Total Expanses day wise
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_TOTALEXPANSESDAYWISE]
+
+			 @SDATE DATE ,
+			 @EDATE DATE 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+				SELECT 
+				EXD.ExpansesMoney 
+			 FROM ExpenditureDetail AS EXD
+			
+			
+			WHERE 
+				EXD.Date BETWEEN @SDATE AND @EDATE 
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_TOTALAMOUNTGRIDVIEW]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_TOTALAMOUNTGRIDVIEW]
+AS
+BEGIN
+
+				
+			SELECT
+				DMT.Date,
+				DMT.Money,
+				DMT.Credit_Money
+			 FROM DipositMoneyDetail AS DMT
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SHOWMILDAYWISE]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 2021-07-03
+-- Description:	TOTAL MIL SHOW DAY WISE
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SHOWMILDAYWISE]
+
+			 @SDATE DATE ,
+			 @EDATE DATE 
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+							SELECT 
+				MID.Mil
+			FROM MilInfoDetail AS MID
+			
+			WHERE 
+				MID.Date BETWEEN @SDATE AND @EDATE 
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_REPORTGIVERANDRICEVERWISE]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 30-06-2021
+-- Description:	Ricever and Giver wise report
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_REPORTGIVERANDRICEVERWISE]
+		 @GIVERID INT ,
+		 @RICEVERID INT 
+AS
+IF @RICEVERID = 0 SET @RICEVERID = NULL
+		IF @GIVERID = 0 SET @GIVERID = NULL
+BEGIN
+
+	SELECT
+				DMT.Date,
+				DMT.Money,
+				DMT.Credit_Money
+			 FROM DipositMoneyDetail AS DMT
+			 
+			 WHERE
+			 
+			 CASE 
+				WHEN @GIVERID IS NULL THEN 1
+				WHEN @GIVERID IS NOT NULL AND DMT.GiverId = @GIVERID THEN 1
+			 END = 1
+			 AND
+			 CASE
+				WHEN @RICEVERID IS NULL THEN 1
+				WHEN @RICEVERID IS NOT NULL AND DMT.ReciverId = @RICEVERID THEN 1
+			 END = 1
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_PURPOSEANDDAYWISEDETAIL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 2021-07-03
+-- Description:	PURPOSE AND DAY WISE DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_PURPOSEANDDAYWISEDETAIL]
+		 @SDATE DATE ,
+		 @EDATE DATE ,
+		 @PURPOSE INT 
+AS
+IF @PURPOSE = 0 SET @PURPOSE = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+				DMD.Date,
+				DMD.Money,
+				DMD.Credit_Money
+			FROM DipositMoneyDetail AS DMD
+			
+				INNER JOIN PurposeInfo AS P ON P.PurposeId = DMD.PurposeId 
+					INNER JOIN StudentInformation AS SI ON SI.Id = DMD.GiverId
+						INNER JOIN StudentInformation AS SD ON SD.Id = DMD.ReciverId
+				
+				WHERE 
+				
+				DMD.Date BETWEEN @SDATE AND @EDATE 
+				
+				AND 
+				
+				CASE 
+					WHEN @PURPOSE IS NULL THEN 1
+					WHEN @PURPOSE IS NOT NULL AND @PURPOSE = DMD.PurposeId THEN 1
+				END = 1
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_NAMEWISEMILSUMMAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-07-02
+-- Description:	Name wise mil summary
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_NAMEWISEMILSUMMAY]
+	@STUDENTNAME INT
+AS
+	IF @STUDENTNAME = 0 SET @STUDENTNAME  = NULL
+BEGIN
+	SET NOCOUNT ON;
+			
+			SELECT 
+				MID.Date ,
+				SI.Name,
+				MID.Mil				
+			 FROM MilInfoDetail AS MID
+				
+					INNER JOIN StudentInformation AS SI ON SI.Id = MID.StudentId
+					
+					WHERE 
+					
+					CASE
+						WHEN @STUDENTNAME IS NULL THEN 1
+						WHEN @STUDENTNAME IS NOT NULL AND @STUDENTNAME = MID.StudentId THEN 1
+					END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_NAMEANDDAYWISEMILDETAIL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<SAMIM
+-- Create date: 2021-07-04
+-- Description:	DAY AND NAME WISE MIL DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_NAMEANDDAYWISEMILDETAIL]
+
+			 @SDATE DATE ,
+			 @EDATE DATE ,
+			 @NAME INT 
+AS
+			IF @NAME = 0 SET @NAME = NULL
+BEGIN
+	SET NOCOUNT ON;	
+	
+			SELECT 
+				MD.Mil
+			FROM MilInfoDetail AS MD
+			
+							
+			
+			WHERE
+			
+			MD.Date between @SDATE and @EDATE 
+			
+			and
+			
+			CASE 
+				WHEN @NAME IS NULL THEN 1
+				WHEN @NAME IS NOT NULL AND @NAME = MD.StudentId THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_NAMEANDDAYWISEDIPOSITDETAIL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM 
+-- Create date: 2021-07-04
+-- Description:	DAY AND NAME WISE DIPOSIT DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_NAMEANDDAYWISEDIPOSITDETAIL]
+			 @SDATE DATE ,
+			 @EDATE DATE ,
+			 @NAME INT 
+AS
+IF @NAME = 0 SET @NAME = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+			SELECT 
+				DD.Money
+			FROM DipositMoneyDetail AS DD
+			
+			
+			WHERE
+			
+			DD.Date between @SDATE and @EDATE 
+			
+			and
+			
+			CASE 
+				WHEN @NAME IS NULL THEN 1
+				WHEN @NAME IS NOT NULL AND @NAME = DD.GiverId THEN 1
+			END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_NAMEANDDATEWISEMILSUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-07-01
+-- Description:	Name and Day wise mil summay
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_NAMEANDDATEWISEMILSUMMARY]
+
+			 @TODAY DATE ,
+			 @TOMORROW DATE ,
+			 @STUDENTNAME INT 
+
+AS
+
+	IF @STUDENTNAME = 0 SET @STUDENTNAME = NULL
+
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+				MID.Date,
+				SI.Name ,
+				MID.Mil
+			FROM MilInfoDetail AS MID 
+			
+					INNER JOIN StudentInformation AS SI ON SI.Id = MID.StudentId 
+					
+					WHERE 
+						MID.Date BETWEEN @TODAY AND @TOMORROW
+						
+					AND
+					CASE
+						WHEN @STUDENTNAME IS NULL THEN 1
+						WHEN @STUDENTNAME IS NOT NULL AND @STUDENTNAME = MID.StudentId THEN 1
+					END = 1
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_MILDISPLAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_MILDISPLAY]
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 
+				MID.Date ,
+				SI.Name,
+				MID.Mil				
+			 FROM MilInfoDetail AS MID
+				
+					INNER JOIN StudentInformation AS SI ON SI.Id = MID.StudentId
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LAST_TOTAL_AMOUNT_DAY_WISE_SYMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	LAST TOTAL AMOUNT DAY WISE
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_LAST_TOTAL_AMOUNT_DAY_WISE_SYMMARY]
+
+				 @SDATE DATE ,
+				 @EDATE DATE 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+					SELECT 
+					ED.ExpansesMoney
+				 FROM ExpenditureDetail AS ED
+				 
+				WHERE ED.Date BETWEEN @SDATE AND @EDATE
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LAST_TOTAL_AMOUNT]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	TOTAL LAST AMOUNT 
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_LAST_TOTAL_AMOUNT]
+
+				 @SDATE DATE ,
+				 @EDATE DATE 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    				SELECT 
+					DD.Money ,
+					DD.Credit_Money
+				 FROM DipositMoneyDetail AS DD
+				 
+				 WHERE DD.Date BETWEEN @SDATE AND @EDATE
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_EXPANSESDISPLAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SHAMIM HOSSAIN
+-- Create date: 2021-07-03
+-- Description:	EXPANSES DISPLAY
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_EXPANSESDISPLAY]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	
+			SELECT 
+				EXD.Date,
+				SI.Name,
+				EXD.WhichOneName,
+				EXD.ExpansesName,
+				EXD.GivenMoney,
+				EXD.ExpansesMoney,
+				EXD.ReturnMoney
+			FROM ExpenditureDetail AS EXD
+			
+				INNER JOIN StudentInformation AS SI ON SI.Id = EXD.StudentId 
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_EXPANSESDAYWISEDISPLAY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM
+-- Create date: 2021-07-03
+-- Description:	DAY WISE EXPANSES DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_EXPANSESDAYWISEDISPLAY]
+
+		 @SDATE DATE ,
+		 @EDATE DATE 
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+		SELECT 
+				EXD.Date,
+				SI.Name,
+				EXD.GivenMoney,
+				EXD.ExpansesMoney,
+				EXD.ReturnMoney
+			FROM ExpenditureDetail AS EXD
+			
+				INNER JOIN StudentInformation AS SI ON SI.Id = EXD.StudentId 
+				
+				WHERE 
+				
+				EXD.Date BETWEEN @SDATE AND @EDATE 
+	
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_EXPANSESDAYANDNAMEWISE]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_EXPANSESDAYANDNAMEWISE]
+
+		 @SDATE DATE ,
+		 @EDATE DATE ,
+		 @NAME INT 
+
+AS
+IF @NAME = 0 SET @NAME = NULL
+BEGIN
+	SET NOCOUNT ON;
+			SELECT 
+				EXD.Date,
+				EXD.ExpansesName,
+				EXD.WhichOneName,
+				EXD.GivenMoney,
+				EXD.ExpansesMoney,
+				EXD.ReturnMoney
+			FROM ExpenditureDetail AS EXD
+			
+				INNER JOIN StudentInformation AS SI ON SI.Id = EXD.StudentId 
+				
+				WHERE 
+				
+				EXD.Date BETWEEN @SDATE AND @EDATE 
+				
+				AND 
+				
+				CASE 
+					WHEN @NAME IS NULL THEN 1
+					WHEN @NAME IS NOT NULL AND @NAME = EXD.StudentId THEN 1
+				END = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DAYWISEMILSUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-07-02
+-- Description:	Day wise mil summary
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DAYWISEMILSUMMARY]
+
+	@TODAY DATE ,
+	@TOMORROW DATE
+	
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT 
+				MID.Date,
+				SI.Name ,
+				MID.Mil
+			FROM MilInfoDetail AS MID 
+			
+					INNER JOIN StudentInformation AS SI ON SI.Id = MID.StudentId 
+					
+					WHERE 
+						MID.Date BETWEEN @TODAY AND @TOMORROW
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DAYBYDAYTOTALAMOUNT]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-06-30
+-- Description:	Day wise total amount show
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DAYBYDAYTOTALAMOUNT]
+
+		 @STARTDATE DATE ,
+		 @ENDDATE DATE 
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT
+				DMT.Date,
+				DMT.Money,
+				DMT.Credit_Money
+			 FROM DipositMoneyDetail AS DMT
+			 
+			 WHERE DMT.Date BETWEEN @STARTDATE AND @ENDDATE 
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DAYANDRICEVERWISESUMMARY]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Samim Hossen
+-- Create date: 2021-07-01
+-- Description:	Day and Ricever wise summary
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DAYANDRICEVERWISESUMMARY]
+
+		 @STARTDATE DATE ,
+		 @ENDDATE DATE ,
+		 @RICEVERNAME INT 
+AS
+	IF @RICEVERNAME = 0 SET @RICEVERNAME = NULL
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 
+			DS.Date,
+			STDG.Name ,
+			PP.PurposeName,
+			DS.Money
+		FROM DipositMoneyDetail AS DS
+			
+			INNER JOIN StudentInformation AS STDG ON STDG.Id = DS.ReciverId 
+				INNER JOIN PurposeInfo AS PP ON PP.PurposeId = DS.PurposeId
+			
+			WHERE
+			
+				DS.Date BETWEEN @STARTDATE AND @ENDDATE 	
+				
+			AND			
+			
+			CASE
+				WHEN @RICEVERNAME IS NULL THEN 1
+				WHEN @RICEVERNAME IS NOT NULL AND @RICEVERNAME = DS.ReciverId THEN 1
+			END = 1
+    
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DATE_AND_NAME_WISE_WITHDRAW_DETAIL]    Script Date: 03/18/2022 00:21:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 23-08-2021
+-- Description:	DAY AND NAME WISE WITHDRAW DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DATE_AND_NAME_WISE_WITHDRAW_DETAIL]
+
+			 @SDATE DATE ,
+			 @EDATE DATE ,
+			 @NAME INT 
+AS
+		IF @NAME = 0 SET @NAME = NULL
+BEGIN
+	SET NOCOUNT ON;
+	
+	select 
+				DMD.Credit_Money	
+			 from DipositMoneyDetail as DMD 
+				
+			 
+			 WHERE 
+			 
+			 DMD.Date BETWEEN @SDATE AND @EDATE
+			 
+			 AND
+			 
+			 CASE
+				 WHEN @NAME IS NULL THEN 1
+				 WHEN @NAME IS NOT NULL AND DMD.ReciverId = @NAME THEN 1
+			 END = 1
+
+END
+GO
+/****** Object:  ForeignKey [FK_DipositMoneyDetail_PurposeInfo]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[DipositMoneyDetail]  WITH CHECK ADD  CONSTRAINT [FK_DipositMoneyDetail_PurposeInfo] FOREIGN KEY([PurposeId])
+REFERENCES [dbo].[PurposeInfo] ([PurposeId])
+GO
+ALTER TABLE [dbo].[DipositMoneyDetail] CHECK CONSTRAINT [FK_DipositMoneyDetail_PurposeInfo]
+GO
+/****** Object:  ForeignKey [FK_DipositMoneyDetail_StudentInformation]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[DipositMoneyDetail]  WITH CHECK ADD  CONSTRAINT [FK_DipositMoneyDetail_StudentInformation] FOREIGN KEY([GiverId])
+REFERENCES [dbo].[StudentInformation] ([Id])
+GO
+ALTER TABLE [dbo].[DipositMoneyDetail] CHECK CONSTRAINT [FK_DipositMoneyDetail_StudentInformation]
+GO
+/****** Object:  ForeignKey [FK_DipositMoneyDetail_StudentInformation1]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[DipositMoneyDetail]  WITH CHECK ADD  CONSTRAINT [FK_DipositMoneyDetail_StudentInformation1] FOREIGN KEY([ReciverId])
+REFERENCES [dbo].[StudentInformation] ([Id])
+GO
+ALTER TABLE [dbo].[DipositMoneyDetail] CHECK CONSTRAINT [FK_DipositMoneyDetail_StudentInformation1]
+GO
+/****** Object:  ForeignKey [FK_ExpenditurePaid_StudentInformation]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[ExpenditureDetail]  WITH CHECK ADD  CONSTRAINT [FK_ExpenditurePaid_StudentInformation] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[StudentInformation] ([Id])
+GO
+ALTER TABLE [dbo].[ExpenditureDetail] CHECK CONSTRAINT [FK_ExpenditurePaid_StudentInformation]
+GO
+/****** Object:  ForeignKey [FK_MilInfoDetail_StudentInformation]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[MilInfoDetail]  WITH CHECK ADD  CONSTRAINT [FK_MilInfoDetail_StudentInformation] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[StudentInformation] ([Id])
+GO
+ALTER TABLE [dbo].[MilInfoDetail] CHECK CONSTRAINT [FK_MilInfoDetail_StudentInformation]
+GO
+/****** Object:  ForeignKey [FK_StudentInformation_DepartmentInfo]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[StudentInformation]  WITH CHECK ADD  CONSTRAINT [FK_StudentInformation_DepartmentInfo] FOREIGN KEY([DepartmentId])
+REFERENCES [dbo].[DepartmentInfo] ([DepartmentId])
+GO
+ALTER TABLE [dbo].[StudentInformation] CHECK CONSTRAINT [FK_StudentInformation_DepartmentInfo]
+GO
+/****** Object:  ForeignKey [FK_StudentInformation_GenderInfo]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[StudentInformation]  WITH CHECK ADD  CONSTRAINT [FK_StudentInformation_GenderInfo] FOREIGN KEY([GenderId])
+REFERENCES [dbo].[GenderInfo] ([GenderId])
+GO
+ALTER TABLE [dbo].[StudentInformation] CHECK CONSTRAINT [FK_StudentInformation_GenderInfo]
+GO
+/****** Object:  ForeignKey [FK_StudentInformation_SemisterInfo]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[StudentInformation]  WITH CHECK ADD  CONSTRAINT [FK_StudentInformation_SemisterInfo] FOREIGN KEY([SemisterId])
+REFERENCES [dbo].[SemisterInfo] ([SemisterId])
+GO
+ALTER TABLE [dbo].[StudentInformation] CHECK CONSTRAINT [FK_StudentInformation_SemisterInfo]
+GO
+/****** Object:  ForeignKey [FK_StudentInformation_ShiftInfo]    Script Date: 03/18/2022 00:21:24 ******/
+ALTER TABLE [dbo].[StudentInformation]  WITH CHECK ADD  CONSTRAINT [FK_StudentInformation_ShiftInfo] FOREIGN KEY([ShiftId])
+REFERENCES [dbo].[ShiftInfo] ([ShiftId])
+GO
+ALTER TABLE [dbo].[StudentInformation] CHECK CONSTRAINT [FK_StudentInformation_ShiftInfo]
+GO
