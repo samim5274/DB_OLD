@@ -1,0 +1,83 @@
+USE [SupperMarketSystem]
+GO
+/****** Object:  Table [dbo].[SellerDetail]    Script Date: 03/18/2022 12:28:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SellerDetail](
+	[SellerId] [int] NOT NULL,
+	[SellerName] [varchar](50) NULL,
+	[SellerAge] [int] NULL,
+	[SellerPhone] [int] NULL,
+	[SellerPassword] [int] NULL,
+ CONSTRAINT [PK_SellerDetail] PRIMARY KEY CLUSTERED 
+(
+	[SellerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ProductDetail]    Script Date: 03/18/2022 12:28:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ProductDetail](
+	[ProductId] [int] NOT NULL,
+	[ProductName] [varchar](50) NOT NULL,
+	[ProductPrice] [int] NOT NULL,
+	[ProductQuantity] [int] NOT NULL,
+	[ProductCatagory] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_ProductDetail] PRIMARY KEY CLUSTERED 
+(
+	[ProductId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CatagoryDetail]    Script Date: 03/18/2022 12:28:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CatagoryDetail](
+	[CatId] [int] NOT NULL,
+	[CatName] [varchar](50) NOT NULL,
+	[CatDiscription] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_CatagoryDetail] PRIMARY KEY CLUSTERED 
+(
+	[CatId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[BillDetail]    Script Date: 03/18/2022 12:28:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[BillDetail](
+	[BillId] [int] NOT NULL,
+	[SellerName] [varchar](50) NOT NULL,
+	[BillDate] [varchar](50) NOT NULL,
+	[TotalAmount] [int] NOT NULL,
+ CONSTRAINT [PK_BillDetail] PRIMARY KEY CLUSTERED 
+(
+	[BillId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO

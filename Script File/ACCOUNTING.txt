@@ -1,0 +1,101 @@
+USE [ACCOUNTING]
+GO
+/****** Object:  Table [dbo].[CustomerInfo]    Script Date: 03/18/2022 12:14:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CustomerInfo](
+	[CustomerId] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Address] [varchar](50) NULL,
+	[Phone] [int] NULL,
+	[CustomerType] [varchar](50) NULL,
+ CONSTRAINT [PK_CustomerInfo] PRIMARY KEY CLUSTERED 
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CategoryInfo]    Script Date: 03/18/2022 12:14:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CategoryInfo](
+	[CateoryId] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+ CONSTRAINT [PK_CategoryInfo] PRIMARY KEY CLUSTERED 
+(
+	[CateoryId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ItemInfo]    Script Date: 03/18/2022 12:14:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ItemInfo](
+	[ItemId] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+	[CategoryId] [int] NULL,
+	[ExpDate] [date] NULL,
+	[MgfDate] [date] NULL,
+	[BuyPrice] [money] NULL,
+ CONSTRAINT [PK_ItemInfo] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[OrderInfo]    Script Date: 03/18/2022 12:14:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderInfo](
+	[OrderId] [int] NOT NULL,
+	[OrderDate] [date] NULL,
+	[ItemId] [int] NULL,
+	[CustomerId] [int] NULL,
+	[DeliveryDate] [date] NULL,
+	[Quantity] [int] NULL,
+	[AdvancePay] [money] NULL,
+	[TotalMoney] [money] NULL,
+ CONSTRAINT [PK_OrderInfo] PRIMARY KEY CLUSTERED 
+(
+	[OrderId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  ForeignKey [FK_ItemInfo_CategoryInfo]    Script Date: 03/18/2022 12:14:18 ******/
+ALTER TABLE [dbo].[ItemInfo]  WITH CHECK ADD  CONSTRAINT [FK_ItemInfo_CategoryInfo] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[CategoryInfo] ([CateoryId])
+GO
+ALTER TABLE [dbo].[ItemInfo] CHECK CONSTRAINT [FK_ItemInfo_CategoryInfo]
+GO
+/****** Object:  ForeignKey [FK_OrderInfo_CustomerInfo]    Script Date: 03/18/2022 12:14:18 ******/
+ALTER TABLE [dbo].[OrderInfo]  WITH CHECK ADD  CONSTRAINT [FK_OrderInfo_CustomerInfo] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[CustomerInfo] ([CustomerId])
+GO
+ALTER TABLE [dbo].[OrderInfo] CHECK CONSTRAINT [FK_OrderInfo_CustomerInfo]
+GO
+/****** Object:  ForeignKey [FK_OrderInfo_ItemInfo]    Script Date: 03/18/2022 12:14:18 ******/
+ALTER TABLE [dbo].[OrderInfo]  WITH CHECK ADD  CONSTRAINT [FK_OrderInfo_ItemInfo] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[ItemInfo] ([ItemId])
+GO
+ALTER TABLE [dbo].[OrderInfo] CHECK CONSTRAINT [FK_OrderInfo_ItemInfo]
+GO

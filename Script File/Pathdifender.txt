@@ -1,0 +1,319 @@
+USE [Pathdifender]
+GO
+/****** Object:  Table [dbo].[GendarInfo]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[GendarInfo](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DepartmentInfo]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DepartmentInfo](
+	[Id] [int] NOT NULL,
+	[DepartmentName] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ShiftInfo]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ShiftInfo](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SemesterInfo]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SemesterInfo](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[S_Login]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[S_Login](
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NULL,
+ CONSTRAINT [PK_S_Login] PRIMARY KEY CLUSTERED 
+(
+	[UserName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Religion]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Religion](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Information]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Information](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+	[FatherName] [varchar](50) NULL,
+	[Gurden_phone] [int] NULL,
+	[Address] [varchar](50) NULL,
+	[DateofBirth] [date] NULL,
+	[Nationality] [varchar](50) NULL,
+	[ReligionID] [int] NULL,
+	[SemesterID] [int] NULL,
+	[ShiftId] [int] NULL,
+	[GenderId] [int] NULL,
+	[DepartmentId] [int] NULL,
+	[Phone] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DEPARTMENTINFONAME]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_DEPARTMENTINFONAME]
+AS
+BEGIN
+	
+		SELECT 
+			
+			D.DepartmentName
+		
+		FROM DepartmentInfo AS D
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_LOGINUSERNAME]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_LOGINUSERNAME] 
+	
+AS
+BEGIN
+	SELECT 
+			L.UserName
+		
+		FROM S_Login AS L
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GRIDVIEW]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GRIDVIEW]
+AS
+BEGIN
+	
+
+	
+
+		SELECT 
+		
+			I.Id,
+			I.Name,
+			I.Address,
+			I.DateofBirth,
+			CASE 
+				WHEN GenderId = 1 THEN 'Male'
+				when GenderId = 2 then 'Female'
+				else 'Others'
+			END AS Gender,					
+			CASE 
+				when ShiftId = 1 then 'Morning Shift'
+				when ShiftId = 2 then 'Day Shift'
+				else 'Evening Shift'
+			END AS Shift,
+			i.DepartmentId,
+			i.GenderId,
+			i.ReligionID,
+			I.Nationality,
+			I.Phone
+		
+		FROM Information AS I
+		
+			
+			
+		
+						
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_DepartmentWiseInformation]    Script Date: 03/18/2022 12:33:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_DepartmentWiseInformation]
+
+	 @IID INT,
+	 @DID INT 
+AS
+	if @IID = 0 set @IID = null
+		if @DID = 0 set @DID = null
+
+BEGIN
+	SELECT 
+		
+			I.Id,
+			I.Name,
+			I.DateofBirth,
+			I.Address,
+			I.Nationality,
+			CASE 
+				when i.GenderId = 1 then 'Male'
+				when i.GenderId = 2 then 'Female'
+				else 'Others'
+			END AS Gemder,
+			CASE
+				WHEN  i.SemesterID = 1 THEN 'First Semester'				
+				WHEN i.SemesterID= 2 THEN 'Second Semester'
+				WHEN i.SemesterID = 3 THEN 'Third Semester'
+				WHEN i.SemesterID= 4 THEN 'Fourth Semester'
+				WHEN i.SemesterID = 5 THEN 'Fifth Semester'
+				WHEN i.SemesterID = 6 THEN 'Sixth Semester'
+				WHEN i.SemesterID = 7 THEN 'Seventh Semester'
+				Else'Final Year'
+			END Semester,
+			
+			CASE
+				WHEN i.ShiftId = 1 THEN 'Morning Shift'
+				WHEN i.ShiftId  = 2 THEN 'Day Shift'
+				WHEN i.ShiftId  = 3 THEN 'Evening Shift'
+				ELSE 'Night Shift'
+			END Shift,
+			d.DepartmentName,
+			I.Phone
+		
+		FROM Information AS I
+				inner join DepartmentInfo d on d.id = I.DepartmentId
+			
+						
+				WHERE 
+				
+				CASE
+					WHEN @IID IS NULL THEN 1
+					WHEN @IID IS NOT NULL AND I.Id = @IID THEN 1
+				END = 1
+				
+				AND 
+				
+				CASE 
+					WHEN @DID IS NULL THEN 1
+					WHEN @DID IS NOT NULL AND 
+					d.id = @DID THEN 1
+				END = 1
+END
+GO
+/****** Object:  ForeignKey [FK_Information_DepartmentID]    Script Date: 03/18/2022 12:33:05 ******/
+ALTER TABLE [dbo].[Information]  WITH CHECK ADD  CONSTRAINT [FK_Information_DepartmentID] FOREIGN KEY([DepartmentId])
+REFERENCES [dbo].[DepartmentInfo] ([Id])
+GO
+ALTER TABLE [dbo].[Information] CHECK CONSTRAINT [FK_Information_DepartmentID]
+GO
+/****** Object:  ForeignKey [FK_Information_GenderId]    Script Date: 03/18/2022 12:33:05 ******/
+ALTER TABLE [dbo].[Information]  WITH CHECK ADD  CONSTRAINT [FK_Information_GenderId] FOREIGN KEY([GenderId])
+REFERENCES [dbo].[GendarInfo] ([Id])
+GO
+ALTER TABLE [dbo].[Information] CHECK CONSTRAINT [FK_Information_GenderId]
+GO
+/****** Object:  ForeignKey [FK_Information_ReligionID]    Script Date: 03/18/2022 12:33:05 ******/
+ALTER TABLE [dbo].[Information]  WITH CHECK ADD  CONSTRAINT [FK_Information_ReligionID] FOREIGN KEY([ReligionID])
+REFERENCES [dbo].[Religion] ([Id])
+GO
+ALTER TABLE [dbo].[Information] CHECK CONSTRAINT [FK_Information_ReligionID]
+GO
+/****** Object:  ForeignKey [FK_Information_SemesterID]    Script Date: 03/18/2022 12:33:05 ******/
+ALTER TABLE [dbo].[Information]  WITH CHECK ADD  CONSTRAINT [FK_Information_SemesterID] FOREIGN KEY([SemesterID])
+REFERENCES [dbo].[SemesterInfo] ([Id])
+GO
+ALTER TABLE [dbo].[Information] CHECK CONSTRAINT [FK_Information_SemesterID]
+GO
+/****** Object:  ForeignKey [FK_Information_ShiftID]    Script Date: 03/18/2022 12:33:05 ******/
+ALTER TABLE [dbo].[Information]  WITH CHECK ADD  CONSTRAINT [FK_Information_ShiftID] FOREIGN KEY([ShiftId])
+REFERENCES [dbo].[ShiftInfo] ([Id])
+GO
+ALTER TABLE [dbo].[Information] CHECK CONSTRAINT [FK_Information_ShiftID]
+GO

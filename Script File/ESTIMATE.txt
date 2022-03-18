@@ -1,0 +1,245 @@
+USE [ESTIMATE]
+GO
+/****** Object:  Table [dbo].[EmpolyDipartment]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[EmpolyDipartment](
+	[DepartmentId] [int] NOT NULL,
+	[DepartmentName] [varchar](50) NULL,
+ CONSTRAINT [PK_EmpolyDipartment] PRIMARY KEY CLUSTERED 
+(
+	[DepartmentId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CustomarInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CustomarInfo](
+	[CustomarId] [int] NOT NULL,
+	[C_Name] [varchar](50) NULL,
+	[C_Address] [varchar](50) NULL,
+	[C_Phone] [int] NULL,
+	[C_Type] [varchar](50) NULL,
+ CONSTRAINT [PK_CustomarInfo] PRIMARY KEY CLUSTERED 
+(
+	[CustomarId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CatagoryInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CatagoryInfo](
+	[CatagoryId] [int] NOT NULL,
+	[C_Name] [varchar](50) NULL,
+ CONSTRAINT [PK_CatagoryInfo] PRIMARY KEY CLUSTERED 
+(
+	[CatagoryId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[number]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[number](
+	[Id] [int] IDENTITY(101,1) NOT NULL,
+	[name] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ItemInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ItemInfo](
+	[ItemId] [int] NOT NULL,
+	[I_Name] [varchar](50) NULL,
+	[I_CatagoryId] [int] NULL,
+	[I_ExoDate] [date] NULL,
+	[I_MgfDate] [date] NULL,
+	[I_BuyPrice] [money] NULL,
+ CONSTRAINT [PK_ItemInfo] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[EmpolyInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[EmpolyInfo](
+	[EmpolyId] [int] NOT NULL,
+	[E_Name] [varchar](50) NULL,
+	[E_Address] [varchar](50) NULL,
+	[E_DateOfBirth] [date] NULL,
+	[E_JoinDate] [date] NULL,
+	[E_Phone] [int] NULL,
+	[E_Department] [int] NULL,
+ CONSTRAINT [PK_EmpolyInfo] PRIMARY KEY CLUSTERED 
+(
+	[EmpolyId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SaleInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SaleInfo](
+	[SaleId] [int] NOT NULL,
+	[CustomerId] [int] NULL,
+	[CategoryId] [int] NULL,
+	[UnitPrice] [money] NULL,
+	[Quantity] [int] NULL,
+	[SaleDate] [date] NULL,
+	[ItemName] [varchar](50) NULL,
+ CONSTRAINT [PK_SaleInfo] PRIMARY KEY CLUSTERED 
+(
+	[SaleId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[SP_ItemSelection]    Script Date: 03/18/2022 12:10:17 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_ItemSelection]
+	   @catId int
+AS
+BEGIN
+			SELECT
+					I.I_Name
+			FROM CatagoryInfo C
+				INNER JOIN ItemInfo I ON I.I_CatagoryId = C.CatagoryId
+				WHERE C.CatagoryId = @catId
+END
+GO
+/****** Object:  Table [dbo].[SelayInformation]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SelayInformation](
+	[SelaryId] [int] NOT NULL,
+	[EmployId] [int] NULL,
+	[Date] [date] NULL,
+	[Department] [int] NULL,
+	[Ammount] [money] NULL,
+ CONSTRAINT [PK_SelayInformation] PRIMARY KEY CLUSTERED 
+(
+	[SelaryId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderInfo]    Script Date: 03/18/2022 12:10:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderInfo](
+	[OrderId] [int] NOT NULL,
+	[CustomarId] [int] NULL,
+	[ItemId] [int] NULL,
+	[OrderDate] [date] NULL,
+	[DeliveryDate] [date] NULL,
+	[Quantity] [int] NULL,
+	[AdvancePay] [money] NULL,
+	[TotalMoney] [money] NULL,
+ CONSTRAINT [PK_OrderInfo] PRIMARY KEY CLUSTERED 
+(
+	[OrderId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  ForeignKey [FK_EmpolyInfo_EmpolyDipartment]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[EmpolyInfo]  WITH CHECK ADD  CONSTRAINT [FK_EmpolyInfo_EmpolyDipartment] FOREIGN KEY([E_Department])
+REFERENCES [dbo].[EmpolyDipartment] ([DepartmentId])
+GO
+ALTER TABLE [dbo].[EmpolyInfo] CHECK CONSTRAINT [FK_EmpolyInfo_EmpolyDipartment]
+GO
+/****** Object:  ForeignKey [FK_ItemInfo_CatagoryInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[ItemInfo]  WITH CHECK ADD  CONSTRAINT [FK_ItemInfo_CatagoryInfo] FOREIGN KEY([I_CatagoryId])
+REFERENCES [dbo].[CatagoryInfo] ([CatagoryId])
+GO
+ALTER TABLE [dbo].[ItemInfo] CHECK CONSTRAINT [FK_ItemInfo_CatagoryInfo]
+GO
+/****** Object:  ForeignKey [FK_OrderInfo_CustomarInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[OrderInfo]  WITH CHECK ADD  CONSTRAINT [FK_OrderInfo_CustomarInfo] FOREIGN KEY([CustomarId])
+REFERENCES [dbo].[CustomarInfo] ([CustomarId])
+GO
+ALTER TABLE [dbo].[OrderInfo] CHECK CONSTRAINT [FK_OrderInfo_CustomarInfo]
+GO
+/****** Object:  ForeignKey [FK_OrderInfo_ItemInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[OrderInfo]  WITH CHECK ADD  CONSTRAINT [FK_OrderInfo_ItemInfo] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[ItemInfo] ([ItemId])
+GO
+ALTER TABLE [dbo].[OrderInfo] CHECK CONSTRAINT [FK_OrderInfo_ItemInfo]
+GO
+/****** Object:  ForeignKey [FK_SaleInfo_CatagoryInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[SaleInfo]  WITH CHECK ADD  CONSTRAINT [FK_SaleInfo_CatagoryInfo] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[CatagoryInfo] ([CatagoryId])
+GO
+ALTER TABLE [dbo].[SaleInfo] CHECK CONSTRAINT [FK_SaleInfo_CatagoryInfo]
+GO
+/****** Object:  ForeignKey [FK_SaleInfo_CustomarInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[SaleInfo]  WITH CHECK ADD  CONSTRAINT [FK_SaleInfo_CustomarInfo] FOREIGN KEY([CustomerId])
+REFERENCES [dbo].[CustomarInfo] ([CustomarId])
+GO
+ALTER TABLE [dbo].[SaleInfo] CHECK CONSTRAINT [FK_SaleInfo_CustomarInfo]
+GO
+/****** Object:  ForeignKey [FK_SelayInformation_EmpolyInfo]    Script Date: 03/18/2022 12:10:18 ******/
+ALTER TABLE [dbo].[SelayInformation]  WITH CHECK ADD  CONSTRAINT [FK_SelayInformation_EmpolyInfo] FOREIGN KEY([EmployId])
+REFERENCES [dbo].[EmpolyInfo] ([EmpolyId])
+GO
+ALTER TABLE [dbo].[SelayInformation] CHECK CONSTRAINT [FK_SelayInformation_EmpolyInfo]
+GO

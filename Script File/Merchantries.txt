@@ -1,0 +1,239 @@
+USE [Merchantries]
+GO
+/****** Object:  Table [dbo].[ManufactureDetail]    Script Date: 03/18/2022 12:17:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ManufactureDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ManufactureName] [varchar](50) NULL,
+ CONSTRAINT [PK_ManufactureDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CategoryDetail]    Script Date: 03/18/2022 12:17:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CategoryDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryName] [varchar](50) NULL,
+ CONSTRAINT [PK_CategoryDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[UserDetail]    Script Date: 03/18/2022 12:17:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[UserDetail](
+	[S_Id] [int] IDENTITY(1,1) NOT NULL,
+	[S_Name] [varchar](50) NULL,
+	[S_Address] [varchar](50) NULL,
+	[S_NID] [int] NULL,
+	[S_DateOfBirth] [date] NULL,
+	[S_JoinDate] [date] NULL,
+	[S_Phone] [int] NULL,
+	[S_Username] [varchar](50) NULL,
+	[S_Password] [varchar](50) NULL,
+ CONSTRAINT [PK_UserDetail] PRIMARY KEY CLUSTERED 
+(
+	[S_Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SalesInfo]    Script Date: 03/18/2022 12:17:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SalesInfo](
+	[Id] [int] NOT NULL,
+	[SelerName] [varchar](50) NULL,
+	[SelerDate] [date] NULL,
+	[Ammount] [money] NULL,
+ CONSTRAINT [PK_SalesInfo] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[SP_MENUFACTURE_SHOW]    Script Date: 03/18/2022 12:17:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	Manufacture Show
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_MENUFACTURE_SHOW]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+					SELECT 
+						MD.Id,
+						MD.ManufactureName
+					FROM ManufactureDetail AS MD
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_CATEGORY_SHOW]    Script Date: 03/18/2022 12:17:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	Show Category
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_CATEGORY_SHOW]
+AS
+BEGIN
+
+	SET NOCOUNT ON;					
+	
+					SELECT 
+						CD.Id,
+						CD.CategoryName
+					FROM CategoryDetail AS CD
+END
+GO
+/****** Object:  Table [dbo].[ProductDetail]    Script Date: 03/18/2022 12:17:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ProductDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Barcode] [int] NULL,
+	[ProductName] [varchar](50) NULL,
+	[ManufactureId] [int] NULL,
+	[CategoryId] [int] NULL,
+	[PurchasePrice] [money] NULL,
+	[SalesPrice] [money] NULL,
+ CONSTRAINT [PK_ProductDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[SP_USERDETAIL]    Script Date: 03/18/2022 12:17:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 27-08-2021
+-- Description:	USER DETAIL
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_USERDETAIL]
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+   			SELECT 
+				UD.S_Name,				
+				UD.S_Address,
+				UD.S_Phone,
+				UD.S_DateOfBirth,
+				UD.S_JoinDate,
+				UD.S_NID,
+				UD.S_Username
+			FROM UserDetail AS UD
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_SALES_INFO_SHOW]    Script Date: 03/18/2022 12:17:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		SAMIM HOSSEN
+-- Create date: 28-08-2021
+-- Description:	SALES INFO SHOW
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_SALES_INFO_SHOW]
+AS
+BEGIN
+		SET NOCOUNT ON;
+		
+			SELECT 
+				SI.Id,
+				SI.SelerName,
+				SI.SelerDate,
+				SI.Ammount
+			 FROM SalesInfo AS SI
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_PRODUCT_DETAIL_SHOW]    Script Date: 03/18/2022 12:17:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	Product Detail Show
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_PRODUCT_DETAIL_SHOW]
+AS
+BEGIN					
+
+					SELECT
+						PD.Barcode,
+						PD.ProductName,
+						MD.ManufactureName,
+						CD.CategoryName,
+						PD.PurchasePrice,
+						PD.SalesPrice,
+						(SalesPrice - PurchasePrice ) Benefit
+					FROM ProductDetail AS PD
+					
+						INNER JOIN ManufactureDetail AS MD ON MD.Id = PD.ManufactureId 
+							INNER JOIN CategoryDetail AS CD ON CD.Id = PD.CategoryId
+END
+GO
+/****** Object:  ForeignKey [FK_ProductDetail_CategoryDetail]    Script Date: 03/18/2022 12:17:50 ******/
+ALTER TABLE [dbo].[ProductDetail]  WITH CHECK ADD  CONSTRAINT [FK_ProductDetail_CategoryDetail] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[CategoryDetail] ([Id])
+GO
+ALTER TABLE [dbo].[ProductDetail] CHECK CONSTRAINT [FK_ProductDetail_CategoryDetail]
+GO
+/****** Object:  ForeignKey [FK_ProductDetail_ManufactureDetail]    Script Date: 03/18/2022 12:17:50 ******/
+ALTER TABLE [dbo].[ProductDetail]  WITH CHECK ADD  CONSTRAINT [FK_ProductDetail_ManufactureDetail] FOREIGN KEY([ManufactureId])
+REFERENCES [dbo].[ManufactureDetail] ([Id])
+GO
+ALTER TABLE [dbo].[ProductDetail] CHECK CONSTRAINT [FK_ProductDetail_ManufactureDetail]
+GO
